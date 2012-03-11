@@ -30,7 +30,7 @@ class CoffeeScriptPhp extends AssetFilter {
  * @param string $content Content to filter.
  * @return string
  */
-	public function output($filename, $content) {
+	public function input($filename, $content) {
 		App::import('Vendor', 'coffeescript-php', array('file' => $this->_settings['path']));
 		return CoffeeScript\compile($content);
 	}
