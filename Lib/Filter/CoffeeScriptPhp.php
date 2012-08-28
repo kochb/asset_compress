@@ -20,7 +20,7 @@ class CoffeeScriptPhp extends AssetFilter {
  * @var array
  */
 	protected $_settings = array(
-		'path' => 'coffeescript-php/coffeescript/coffeescript.php'
+		'path' => 'coffeescript-php/src/CoffeeScript/Init.php'
 	);
 
 /**
@@ -32,6 +32,7 @@ class CoffeeScriptPhp extends AssetFilter {
  */
 	public function input($filename, $content) {
 		App::import('Vendor', 'coffeescript-php', array('file' => $this->_settings['path']));
-		return CoffeeScript\compile($content);
+		CoffeeScript\Init::load();
+		return CoffeeScript\Compiler::compile($content);
 	}
 }
